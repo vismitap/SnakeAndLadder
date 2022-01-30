@@ -9,23 +9,26 @@ namespace SnakeAndLadder
     internal class SnakeAndLadder
     {
         const int NO_PLAY = 0, LADDER = 1, SNAKE = 2, WINNING_POSITION = 100;
-        int playerPosition = 0, count = 0;
-        public void Play()
+        int playerPosition = 0;
+        public int Play()
         {
-            Console.WriteLine("\n---The game has started---\n");
             Random random = new Random();
-            int diceOutcome = random.Next(1,7);
             
-            while (playerPosition < WINNING_POSITION)
+            while(playerPosition < WINNING_POSITION)
             {
-                int option = random.Next(0,3);
+                int diceOutcome = random.Next(1,7);
+                int option = random.Next(0, 3);
+
                 switch (option)
                 {
+
                     case NO_PLAY:
                         break;
 
                     case LADDER:
                         playerPosition += diceOutcome;
+                        diceOutcome = random.Next(1, 7);  
+                        Play();
                         break;
 
                     case SNAKE:
@@ -36,10 +39,9 @@ namespace SnakeAndLadder
                         }
                         break;
                 }
-                count++;
-                Console.WriteLine("Player position is: " + playerPosition);
             }
-            Console.WriteLine("\nNumber of times dice was rolled : " + count + "\n");
+
+            return playerPosition;
 
         }
     }
