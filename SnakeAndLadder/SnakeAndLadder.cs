@@ -31,6 +31,10 @@ namespace SnakeAndLadder
 
                     case SNAKE:
                         playerPosition -= diceOutcome;
+                        if (playerPosition < 0)
+                        {
+                            playerPosition = 0;
+                        }
                         break;
                 }
 
