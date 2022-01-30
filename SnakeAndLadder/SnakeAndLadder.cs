@@ -12,7 +12,9 @@ namespace SnakeAndLadder
         {
             int startPosition = 0;
             Console.WriteLine("The game has started");
-
+            Random random = new Random();
+            int diceOutcome = random.Next(1,7);
+            Console.WriteLine("The dice outcome is: "+diceOutcome);
         }
     }
 }
